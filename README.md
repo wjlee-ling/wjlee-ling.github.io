@@ -1,5 +1,5 @@
-# wjlee-ling.github.io
+## 블로그
 
+https://wjlee-ling.github.io/
 
-:triangular_ruler: Jekyll theme for building a personal site, blog, project documentation, or portfolio.
-
+프로젝트 후기 및 공부 내용 정리한 
