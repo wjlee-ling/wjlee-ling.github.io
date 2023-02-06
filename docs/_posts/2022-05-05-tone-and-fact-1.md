@@ -1,4 +1,5 @@
 ---
+permalink: /project/
 title: Tone&Fact 개발기
 search: true
 description: 언론사별 사설 생성 모델
