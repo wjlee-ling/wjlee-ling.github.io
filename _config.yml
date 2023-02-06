@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 locale                   : "ko-KR"
 title                    : "속도 보단 방향"
 title_separator          : "-"
-subtitle                 : "NLP log from linguist-turned AI engineer" # site tagline that appears below site title in masthead
+subtitle                 : "남들보다 빠르게 보다는 나의 방향으로" # site tagline that appears below site title in masthead
 name                     : "이원재 Lee Won-Jae "
 description              : "An amazing website."
 url                      : "https://wjlee-ling.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -106,7 +106,7 @@ analytics:
 author:
   name             : "이원재"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "'남들보다 빠르게' 보다는 '나만의 방향'대로"
+  bio              : "NLP log from linguist-turned AI engineer"
   location         : "South Korea, Earth"
   email            :
   links:
