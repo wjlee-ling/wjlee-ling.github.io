@@ -5,7 +5,7 @@ description: 언론사별 사설 생성 모델
 date: 2022-05-05
 last_modified_at: 2022-05-17
 categories:
-    - project
+    - projects
 tags: 
     - kogpt2
 ---
