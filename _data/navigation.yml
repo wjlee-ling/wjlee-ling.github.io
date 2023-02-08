@@ -2,7 +2,7 @@
 main:
   - title: "Projects"
     url: "/projects"
-  - title: "Blogs"
-    url: "/blogs"
+  - title: "TIL"
+    url: "/til"
   # - title: "Sitemap"
   #   url: /sitemap/
