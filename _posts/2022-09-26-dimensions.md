@@ -48,7 +48,7 @@ print(f'dim=0 : {row_wise} ::: dim=1 : {col_wise}')
 
 [torch.sum() 설명](https://pytorch.org/docs/stable/generated/torch.sum.html?highlight=torch%20sum#torch.sum)을 보면 파라미터 `dim`을  "the dimension or dimensions to reduce"라고 설명한다. 즉 위 예시에서 크기가 (3,4)인 X를 두고 `torch.sum(X, dim=0)`를 하면 크기가 (3,4)에서 (4)가 되고 `torch.sum(X, dim=1)`를 하면 (3)이 된다.
 
-![matrix img](notebooks_images/dim-2d.png)
+![matrix img](images/dim-2d.png)
 
 #### 차원이 유지되는 경우: dim?
 
@@ -86,9 +86,9 @@ out_dim_0
 
 
 
-![img1](notebooks_images/dim-1.png)
-![img2](notebooks_images/dim-2.png)
-![img3](notebooks_images/dim-3.png)
+![img1](images/dim-1.png)
+![img2](images/dim-2.png)
+![img3](images/dim-3.png)
 
 
 
@@ -106,6 +106,6 @@ out_dim_1
 
 
 
-![img4](notebooks_images/dim-4.png)
-![img5](notebooks_images/dim-5.png)
-![img6](notebooks_images/dim-6.png)
+![img4](images/dim-4.png)
+![img5](images/dim-5.png)
+![img6](images/dim-6.png)
