@@ -1,12 +1,16 @@
-# 정규화
-> normalization, regularization, standardization
-
-- toc: true
-- badges: false
-- comments: true
-- date: 2022-11-20
-- last-modified-at: 2022-11-20 
-- categories: [TIL]
+---
+title: 정규화?
+search: true
+toc: true
+description: normalization, regularization, standardization 차이 이해하기
+date: 2022-11-21
+categories:
+    - TIL
+tags: 
+    - normalization
+    - regularization
+    - standardization
+---
 
 머신러닝, 딥러닝계에서 normalization, standardization, regularization은 대개 정규화라는 용어로 번역이 되기 때문에 개인적으로 각각의 개념과 쓰임이 헷갈리기도 했다. 그래서 한번 정리해 봤다.
 
@@ -26,6 +30,7 @@
 ### min-max scaling
 
 (min-max) **Normalization**은 다음의 식으로 값들의 범위를 [0, 1]로 조정한다.
+
 $$ x' = \frac{x - x_{min}}{x_{max} - x_{min}} $$
 
 다만 임금처럼 최댓값과 최솟값의 차이가 엄청 큰 특성에 대해서는 min-max scaling이 위험할 수도 있다고 한다 (구글 포스트 참고). 예를 들어 말단 사원의 임금과 (이에 수천배 더 벌 수 있는) CEO의 임금을 일괄적으로 정규화하면 소수의 고임금자들 때문에 임금 분포가 극단적으로 좌편향되기 때문이다. 즉 min-max 정규화는 아웃 라이어 처리에 효과적이지 않다.
@@ -42,6 +47,7 @@ $$ x' = \frac{x - x_{min}}{x_{max} - x_{min}} $$
 ## Standardization
 
 좁은 의미의 **Standardization**(표준화)는 z-score normalizationo을 의미하며 데이터 분포가 표준정규분포, 즉 평균이 0 표준편차가 1이 되도록 만든다. centering과 scaling을 차례로 적용하며 그 수식은 다음과 같다.
+
 $$ x' = \frac{x-\mu}{\sigma}$$
 
 표준화의 장점은 학습을 빠르게 하고 안정적으로 하는 것이다. MNIST 데이터로 딥러닝 모델을 만든다고 하자. 데이터를 표준화하지 않으면 첫 히든 레이어는 인풋으로 [0, 255] 범위의 값들을 받아 활성화 함수로 [0, 1] (sigmoid 사용 시), [-1, 1] (tanh 사용 시) 사이의 값들로 출력하기 때문에 이후 레이어들보다 대략 255배 높은 값들을 처리하게 된다. 그 결과 첫 레이어의 활성화 함수에서 saturation이 일어나 역전파시 업데이트가 거의 안돼 모델 훈련을 느리게 할 수 있다.
@@ -62,7 +68,7 @@ $$ x' = \frac{x-\mu}{\sigma}$$
 
 ### 가중치(Weight) 규제
 
-[과적합이 이뤄지면 가중치들도 크기 때문에](https://stats.stackexchange.com/questions/64208/why-do-overfitted-models-tend-to-have-large-coefficients) 가중치들의 합(놈; norm)을 비용함수에 추가하여, 비용함수를 줄이는 최적화 과정에서 가중치도 작게 만들어 과적합을 막을 수 있다. 이렇게 추가적인 페널티로 쓰이는 놈은 벡터의 크기로 ${\lVert{x}\rVert}_p = {(\sum_{k=1}^{n}{|x_k|}^p)}^{1/p}$이다. p 값에 따라 비용 함수가 L1, L2 loss가 되는데 L1 놈은 추론에 영향력이 작은 차원의 가중치를 0에 가깝게 줄이기 때문에 feature를 가려내는 데(*feature selection*) 도움이 된다고 하고, L2 놈은 가중치를 골고루 줄인다고 한다. 
+[과적합이 이뤄지면 가중치들도 크기 때문에](https://stats.stackexchange.com/questions/64208/why-do-overfitted-models-tend-to-have-large-coefficients) 가중치들의 합(놈; norm)을 비용함수에 추가하여, 비용함수를 줄이는 최적화 과정에서 가중치도 작게 만들어 과적합을 막을 수 있다. 이렇게 추가적인 페널티로 쓰이는 놈은 벡터의 크기로 $${\lVert{x}\rVert}_p = {(\sum_{k=1}^{n}{|x_k|}^p)}^{1/p}$$이다. p 값에 따라 비용 함수가 L1, L2 loss가 되는데 L1 놈은 추론에 영향력이 작은 차원의 가중치를 0에 가깝게 줄이기 때문에 feature를 가려내는 데(*feature selection*) 도움이 된다고 하고, L2 놈은 가중치를 골고루 줄인다고 한다. 
 
 ### 노이즈 추가
 

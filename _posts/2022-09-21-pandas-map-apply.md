@@ -1,11 +1,14 @@
-# Pandas Map, Apply ApplyMap
-> map, apply, applymap 함수 차이점
-
-- toc: true
-- badges: true
-- comments: true
-- categories: [TIL]
-
+---
+title: pandas의 Map, Apply, ApplyMap
+search: true
+toc: true
+description: map, apply, applymap 함수 차이점 알아보기
+date: 2022-09-21
+categories:
+    - TIL
+tags: 
+    - pandas
+---
 Pandas를 다루다 보면 한번쯤은 헷갈릴만한 map, apply, applymap 정리하기.
 
 
