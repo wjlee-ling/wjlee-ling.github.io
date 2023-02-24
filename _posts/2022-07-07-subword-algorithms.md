@@ -116,3 +116,4 @@ $$ \mathcal{L} = - 10 \cdot \log P(["d", "og"]) - 5 \cdot \log P(["d", "o"]) = 4
 4. huggingface: [Byte-Pair Encoding](https://huggingface.co/course/chapter6/5?fw=pt)
 5. huggingface: [WordPiece](https://huggingface.co/course/chapter6/6?fw=pt)
 6. huggingface: [Unigram](https://huggingface.co/course/chapter6/7?fw=pt)
+7. stackoverflow: [Why is the vocab size of byte level bpe smaller than unicode's vocab size?](https://stackoverflow.com/questions/66193575/why-is-the-vocab-size-of-byte-level-bpe-smaller-than-unicodes-vocab-size)
