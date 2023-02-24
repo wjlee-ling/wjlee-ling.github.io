@@ -1,11 +1,13 @@
-# pytorch 연산 적용 차원(dimension) 이해
-> torch.sum / torch.gather로 알아보기
-
-- toc: true
-- badges: true
-- comments: true
-- categories: [TIL]
-- date: 2022-09-26
+---
+title: pytorch 연산 적용 차원(dimension) 이해
+search: true
+description: torch.sum / torch.gather로 알아보기
+date: 2022-09-26
+categories:
+    - TIL
+tags: 
+    - torch
+---
 
 Pandas나 Pytorch에서는 연산을 적용할 차원(dimension)을 명시해야 하는 함수들이 있다. 그런데 차원을 잘못 명시해 에러가 나거나, (최악의 경우) 잘못된 결과를 얻어놓고 넘어가는 경우가 왕왕 있다.
 
