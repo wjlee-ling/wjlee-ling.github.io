@@ -26,7 +26,7 @@ BPE의 다양한 알고리즘을 [huggingface의 설명](https://huggingface.co/
 **훈련 방식**
 
 0. 정규화
-1. pre-tokenization & 기본 사전 만들기: 문장을 단어 단위로 나누기. 띄어쓰기 위주의 토큰화(e.g. GPT-2, Roberta 경우)도 가능하지만 보다 복잡한 토큰화를 사용할 수도 있다(GPT, XLM 등). 얻어진 토큰들을 기본 사전으로 삼고, 각 토큰들의 빈도수를 센다.
+1. pre-tokenization (어절 단위로 자르기) & 기본 사전 만들기: 문장을 단어 단위로 나누기. 띄어쓰기 위주의 토큰화(e.g. GPT-2, Roberta 경우)도 가능하지만 보다 복잡한 토큰화를 사용할 수도 있다(GPT, XLM 등). 얻어진 토큰들을 기본 사전으로 삼고, 각 토큰들의 빈도수를 센다.
 2. 위에서 구한 기본 사전들의 각 유닛들의 조합들 중 가장 빈도가 높은 조합을 사전에 추가한다.
 3. 사전에 정한 크기에 사전이 될 때까지 (2)를 반복한다. 
 
@@ -47,9 +47,15 @@ vocabulary = ['b, 'g', 'h', 'n', 'p', 's', 'u']
 
 > note: `</w>`와 같은 특별 토큰을 단어 끝에 붙여 단어간 경계를 표기하고 훈련시키기도 한다.
 
-## Byte-level BPE 
+## BPE(Byte Pair Encoding) 
 
-Unicode가 아닌 Byte로 표현해 사전을 구성하기도 한다. 예를 들어 GPT-2는 바이트 기반으로 기본 사전을 만들기 때문에 256(==2^8)이라는 작은 크기의 기본 사전으로 1) 모든 영문자, 숫자와 일부 특수문자를 커버하고 2) 이들을 결합해 만든 50,000개의 조합과 <END-OF-TEXT>이라는 스페셜 토큰을 추가해 총 50,257짜리 사전을 구성한다.
+위 예시에서 보듯이 BPE는 이름대로 빈도가 높은 바이트쌍들을 파악하여 사전에 새 유닛으로 추가한다. 그래서 어절 (또는 띄어쓰기) 단위로 사전을 만들 때 크기가 12라고 한다면, 빈도가 높은 sub-string 2쌍을 새로 사전에 추가하면 크기를 10으로 줄일 수 있다.
+```
+b, g, h, p, n, s, u, hug, pug, pun, bun, hugs  -> b, g, h, p, n, s, u, ug, un
+``` 
+
+### BBPE (Byte-level Byte Pair Encoding)
+알파벳 외에도 한글이나 이모지가 있을 때에는 사전을 어떻게 만들까? 'ㄱ'부터 '힣'까지 한글에 있는 모든 캐릭터로만 사전을 만든다고 해도 크기가 10,000을 넘긴다. 이러한 단점을 극복하고자 BBPE는 유니코드를 바이트로 바꿔 BPE를 적용한다. 바이트 기반으로 기본 사전을 만들기 때문에 256(==2^8)이라는 작은 크기의 기본 사전으로 모든 sub-string쌍을 커버할 수 있는데 예를 들어 GPT-2는 1) 기본 256 바이트 유닛 2) 이들을 결합해 만든 50,000개의 조합과 \<eos>이라는 스페셜 토큰을 추가해 총 50,257짜리 사전을 구성한다.
 
 **문제점**
 빈도수가 똑같은 서브워드 쌍(pair)들이 여러 있을 때 어떤 쌍을 우선시할지 애매하다. 추가되는 쌍에 따라 같은 단어가 여러가지 방법으로 다르게 인코딩 될 수 있으며, 이는 최종 성능 평가에 영향을 줄 수 있다.
@@ -101,7 +107,7 @@ $$ \mathcal{L} = - 10 \cdot \log P(["d", "og"]) - 5 \cdot \log P(["d", "o"]) = 4
 오히려 loss가 증가한다. 따라서 세 후보 중 없앴을 때 loss가 최소로 증가하는 pair인 "o" 나 "og"를 사전에서 제거하게 된다.
 
 ## SentencePiece
-[**SentencePiece**](https://github.com/google/sentencepiece)는 별도의 알고리즘이 아니라 BPE와 Unigram 알고리즘을 지원하는 라이브러리로 구글이 공개했다.
+[**SentencePiece**](https://github.com/google/sentencepiece)는 별도의 알고리즘이 아니라 BPE와 Unigram 알고리즘을 지원하는 라이브러리로 구글이 공개했다. SentencePiece가 사용하는 BPE는 살짝 다르다고 한다.
 
 ## Reference
 1. huggingface: [BPE Tokenizer Summary](https://huggingface.co/docs/transformers/tokenizer_summary#bytepair-encoding-bpe)
