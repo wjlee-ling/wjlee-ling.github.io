@@ -1,13 +1,13 @@
-# torch.gather 직관적으로 이해하기
-> dim & index 어떻게 할 것인가
-
-- toc: true
-- badges: true
-- comments: true
-- date: 2022-09-29
-- last-modified-at: 2022-09-30
-- categories: [TIL]
-
+---
+title: torch.gather 직관적으로 이해하기
+search: true
+description: dim & index, 어떻게 할 것인가
+date: 2022-09-29
+categories:
+    - TIL
+tags: 
+    - torch
+---
 얼마 전 torch에서 말하는 dimension에 대해 다루는 포스트에서 gather 함수를 예시로 다뤄보았다. 사실 2차원을 대상으로 torch.gather을 적용하는 것은 직관적으로 이해가 되나, 3차원 이상 텐서에 적용하려면 `dim` 값은 어떻게 해야할지, `index`는 어떻게 정해야할지 이해가 쉽지 않다. 긴 시간 고민해 보고 나름대로 정리한 내용을 공유한다.
 
 ## 기본 조건 이해하기
@@ -41,7 +41,7 @@ input and index must have the same number of dimensions. It is also required tha
 
 3차원의 텐서에서 대각선에 위치한 원소들만 뽑아 2차원 행렬을 만들어 보자. 
 
-![problem-solution](notebooks_images/torch-gather-example1.png)
+![problem-solution](/assets/images/torch-gather-example1.png)
 
 
 
@@ -74,7 +74,7 @@ _input
 
 `index[0][0][0]`에 배정할 값을 `input`에서 찾는다고 할 때, 1차원만 변수고 0차원(배치)과 2차원(열)이 모두 0으로 고정이므로 `index[0][0][0] = input[0][?][0]`이다. 물음표에 들어갈 인덱스를 찾는게 문제인데, 이를 그림으로 표현하면 다음과 같다.
 
-![gather-dim1-1-ex](notebooks_images/gather-dim1-ex1.png)
+![gather-dim1-1-ex](/assets/images/gather-dim1-ex1.png)
 
 위 `input` 텐서에서 우리가 찾는 값은 1이고, 이 값은 해당 열(노란색)의 0번 인덱스 값이다. 따라서 `index[0][0][0] = 0`이다. 
 
@@ -125,7 +125,7 @@ out
 
 이번엔 인덱싱을 column-wise로 해보자. 2번째 차원, 즉 feature 차원이 *변수*이고 batch/observation 차원이 *상수*이다 그림으로 인덱싱 작업을 표현하면 다음과 같다. 
 
-![gather-dim2-ex](notebooks_images/gather-dim2-ex1.png)
+![gather-dim2-ex](/assets/images/gather-dim2-ex1.png)
 
 우리가 추출할 값들은 배치마다 0번째 행의 0번 인덱스, 1번째 행의 1번 인덱스이다. 
 
