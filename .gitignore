@@ -27,3 +27,12 @@ codekit-config.json
 .sass-cache
 _asset_bundler_cache
 _site
+
+# log
+_notebooks
+
+# poetry & virtualenvs
+.venv
+poetry.lock
+pyproject.toml
+.python-version
