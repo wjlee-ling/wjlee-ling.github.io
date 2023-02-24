@@ -1,12 +1,14 @@
-# torch RNN/LSTM/GRU의 output과 hidden 
-> 
+---
+title: torch RNN/LSTM/GRU의 output과 hidden
+search: true
+description: 
+date: 2022-10-17
+categories:
+    - TIL
+tags: 
+    - torch
+---
 
-- toc: true
-- Badges: true
-- comments: true
-- date: 2022-10-17
-- last-modified-at: 2022-10-17 
-- categories: [TIL]
 
 `torch.nn.RNN` `torch.nn.LSTM` `torch.nn.GRU`은 `forward`의 결과물로 두 벡터를 돌려준다. pytorch의 공식 doc에 의하면 `output`과 `h_n`인데, 만드는 모델, 과제에 따라 사용해야 하는 벡터가 다르다. 지금까지 주로 huggingface 라이브러리를 썼기 때문에 torch.nn의 RNN/LSTM/GRU를 쓸 일은 별로 없었지만 아직도 양뱡향 LSTM 모델등은 일부 사용하는 경우가 있기에 이번 기회에 항상 헷갈렸던 `output`과 `'h_n`의 차이점에 대해 알아봤다.
 
