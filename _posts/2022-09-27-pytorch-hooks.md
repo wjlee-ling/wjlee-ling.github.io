@@ -1,14 +1,15 @@
-# Pytorch Hook 
-> subtitle
+---
+title: pytorch 훅(hook)
+search: true
+description: 
+date: 2022-09-27
+categories:
+    - TIL
+tags: 
+    - torch
+---
 
-- toc: true
-- badges: true
-- comments: true
-- date: 2022-09-27
-- last-modified-at: 2022-09-27 
-- categories: [TIL]
-
-### hook 이란
+## hook 이란
 
 > A **hook** is a place and usually an interface provided in packaged code that allows a programmer to insert customized programming.
 
@@ -24,7 +25,7 @@ PyTorch에서도 hook을 사용할 수 있는데, `Tensor`와 `nn.Module`에 적
 
 `nn.Module`에 등록된 hook들은 model.__dict__에서 확인할 수 있다.
 
-### 용법
+## 용법
 
 1. 디버깅
 
