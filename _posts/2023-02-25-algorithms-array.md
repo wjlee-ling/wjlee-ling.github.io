@@ -1,5 +1,5 @@
 ---
-title: Data Structure Study (1) 
+title: Data Structure Study (1) Array
 description: Arrays
 search: true
 toc: true
