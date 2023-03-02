@@ -5,9 +5,9 @@ search: true
 toc: true
 date: 2023-02-26
 categories:
-    - data structure
+    - C++
 tags:
-    - c++
+    - data structure
     - array
 ---
 
