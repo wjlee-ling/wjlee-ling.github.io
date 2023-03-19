@@ -42,9 +42,10 @@ tags:
 결국 분산이 크다는 것은 모델이 훈련셋과 검증셋에서 보이는 분포가 많이 다르다는 뜻으로, 모델이 훈련셋에 있는 노이즈나 아웃라이어에 지나치게 민감할 때 **overfitting**이 나타날 수 있다.
 
 즉 편향-분산 트레이드오프는 훈련셋에서의 예측력과 검증셋에서의 일반화 사이의 줄다리기이다.
+
 <figure>
     <img width="1000" alt="bias and variance error graph" src="https://user-images.githubusercontent.com/61496071/226149026-c07689ad-dda2-4da9-8e3f-cb72a29b529b.png">
-    <figcapttion style="text-align: center;">bias-variance trade-off에 따르면 모델의 복잡도가 올라갈수록 bias는 줄어들지만 variance가 증가한다. </figcaption>
+    <figcapttion style="text-align: center;">bias-variance trade-off에 따르면 모델의 복잡도가 올라갈수록 bias는 줄어들지만 variance가 증가한다.</figcaption>
 </figure>
 
 ## DL 모델의 bias-variance trade-off
@@ -52,9 +53,11 @@ tags:
 
 ### double descent
 **Double Descent**에 대한 [openAI의 deep double descent 설명](https://openai.com/research/deep-double-descent)을 번역해 보면,
+
 > 모델과 데이터의 크기, 훈련 시간을 늘렸을 때 모델의 성능이 처음엔 나아지다가, 악화되고, 다시 개선되는 *double descent 현상*이 CNN, ResNet, 트랜스포머 모델에서 발생한다는 것을 확인했다. 이 현상은 적절한 규제(regularization)로 막을 수 있다. 이러한 현상이 모델 상관없이 전반적으로(universially) 나타나는데, 왜 발생하는지 제대로 파악하지 못했으며 중요한 연구점으로 판단하고 있다. 
 
 [Reconciling modern machine learning practice and the bias-variance trade-off](https://arxiv.org/pdf/1812.11118.pdf)는 큰 딥러닝 모델이 큰 데이터셋으로 훈련이 됐을 때 bias-variance trade-off 공리대로 test error가 전통적인 U-shape을 그리다가 interpolation(즉 훈련 셋에서 loss가 0) 지점이 지나면 다시 둘 다 줄어든다고 주장한다.
+
 > When we increase the function class capacity high enough (e.g., by increasing the number of features or the size of the neural network architecture), the learned predictors achieve (near) perfect fits to the training data—i.e., interpolation. Although the learned predictors obtained at the interpolation threshold typically have high risk, we show that **increasing the function class capacity beyond this point leads to decreasing risk**, typically going below the risk achieved at the sweet spot in the “classical” regime.
 
 <figure>
@@ -70,8 +73,10 @@ tags:
 </figure>
 
 모델의 크기 뿐만 아니라 데이터의 크기도 고심해야 한다. 
+
 <figure>
     <img width="1000" alt="more data could hurt" src="https://user-images.githubusercontent.com/61496071/226152389-c90b796b-ecf7-4566-b0a2-214b0e492778.png">
     <figcaption style="text-align: center;">출처: OpenAI</figcaption>
 </figure>
+
 위 그림은 번역 과제에서 데이터의 크기와 트랜스포머 모델의 크기에 따라 loss값이 어떻게 되는지를 보여주는데, 오히려 데이터가 많을 때 적을 때보다 성능이 떨어지는 모델 사이즈 구간이 있음을 보여준다. 즉 무작정 데이터를 늘린다고 능사가 아니라, 데이터 크기와 모델 크기 사이의 밸런스를 고려해야 한다는 뜻이다.
