@@ -45,13 +45,15 @@ tags:
 
 <figure>
     <img width="1000" alt="bias and variance error graph" src="https://user-images.githubusercontent.com/61496071/226149026-c07689ad-dda2-4da9-8e3f-cb72a29b529b.png">
-    <figcapttion style="text-align: center;">bias-variance trade-off에 따르면 모델의 복잡도가 올라갈수록 bias는 줄어들지만 variance가 증가한다.</figcaption>
+    <figcaption style="text-align: center">bias-variance trade-off에 따르면 모델의 복잡도가 올라갈수록 bias는 줄어들지만 variance가 증가한다.</figcaption>
 </figure>
 
 ## DL 모델의 bias-variance trade-off
 내 궁금증대로 최신 딥러닝 모델이 bias-variance trade-off를 극복할 수 있다는 주장들이 있었다.
 
+
 ### double descent
+
 **Double Descent**에 대한 [openAI의 deep double descent 설명](https://openai.com/research/deep-double-descent)을 번역해 보면,
 
 > 모델과 데이터의 크기, 훈련 시간을 늘렸을 때 모델의 성능이 처음엔 나아지다가, 악화되고, 다시 개선되는 *double descent 현상*이 CNN, ResNet, 트랜스포머 모델에서 발생한다는 것을 확인했다. 이 현상은 적절한 규제(regularization)로 막을 수 있다. 이러한 현상이 모델 상관없이 전반적으로(universially) 나타나는데, 왜 발생하는지 제대로 파악하지 못했으며 중요한 연구점으로 판단하고 있다. 
